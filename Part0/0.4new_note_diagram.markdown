@@ -1,0 +1,24 @@
+participant browser
+participant server
+participant database
+
+browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+activate server
+server->>database: insert into database content and current date
+activate database
+database-->>server: Success
+deactivate database
+server-->>browser: Redirect to https://studies.cs.helsinki.fi/exampleapp/notes
+deactivate server
+
+browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+activate server
+server-->>browser: Updated HTML document with new note
+deactivate server
+
+Explanation: 
+1. Browser sends POST request to the server for creating a new note
+2. The server received the request and inserts the new note into the database
+3. Insertion is successful. The server responds to the browser with a redirect to the notes page
+4. The browser sends GET request to fetch the updated notes
+5. The server responds with the updated HTML document with the new note

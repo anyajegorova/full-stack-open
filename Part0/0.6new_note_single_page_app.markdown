@@ -1,0 +1,25 @@
+participant browser
+participant server
+participant database
+
+browser->>browser: User enters note content and clicks Save button
+browser->>browser: Client-side validation of note content
+browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+activate server
+
+server->>database: INSERT INTO notes (content, date) VALUES (new_note_content, current_date)
+activate database
+database-->>server: Success
+deactivate database
+
+server-->>browser: Success response
+deactivate server
+
+browser->>browser: Update UI to display new note
+
+1. The user types a note and clicks 'Save' button in the browser.
+2. Browser performs client-side validation of the note
+3. The browser sends POST request to the server to create a new note.
+4. The server receives the request and inserts the new note into database
+5. The server responds to the browser with a success response
+6. The browser updates the user interface to display new note, page is not reloaded

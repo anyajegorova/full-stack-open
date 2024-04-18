@@ -1,0 +1,27 @@
+participant browser
+participant server
+
+browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
+activate server
+server-->>browser: HTML document for the single-page app
+deactivate server
+
+browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+activate server
+server-->>browser: JavaScript file for the single-page app
+deactivate server
+
+browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+activate server
+server-->>browser: Initial JSON data for the single-page app
+deactivate server
+
+1. The browser sends GET request to the server.
+2. The server responds with the HTML document.
+3. The browser starts executing JS code.
+4. The browser sends GET request to the server for JS file.
+5. The server responds with JS file.
+6. The browser executes the JS code, which handles client-side routing.
+7. The broser sends GET request to the server for JSON data.
+8. The server responds with JSON data.
+9. The browser renders the notes using JSON data.

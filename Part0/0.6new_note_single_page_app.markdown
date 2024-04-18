@@ -7,7 +7,7 @@ browser->>browser: Client-side validation of note content
 browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
 activate server
 
-server->>database: INSERT INTO notes (content, date) VALUES (new_note_content, current_date)
+server->>database: inserting a note and current date into database
 activate database
 database-->>server: Success
 deactivate database

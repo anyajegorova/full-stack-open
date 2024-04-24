@@ -1,8 +1,11 @@
-const Feedback = ({text, count}) => {
+const Feedback = ({ text, count }) => {
     return (
-        <p>
-            {text} {count}
-        </p>
+        <tbody>
+            <tr>
+                <td>{text}</td>
+                <td>{count}</td>
+            </tr>
+        </tbody>
     )
 
 }

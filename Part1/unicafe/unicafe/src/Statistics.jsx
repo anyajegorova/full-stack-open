@@ -6,14 +6,14 @@ const Statistics = ({ good, neutral, bad }) => {
     const average = (good + (-bad)) / all + '%';
     const positive = good / all * 100 + '%';
     return (
-        <>
+        <table>
             <Feedback text="good" count={good} />
             <Feedback text="neutral" count={neutral} />
             <Feedback text="bad" count={bad} />
             <StatisticLine text="all" value={all} />
             <StatisticLine text="average" value={average} />
             <StatisticLine text="positive" value={positive} />
-        </>
+        </table>
     )
 }
 

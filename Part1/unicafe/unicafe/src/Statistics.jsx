@@ -1,4 +1,5 @@
 import Feedback from './Feedback.jsx';
+import StatisticLine from './StatisticLine.jsx';
 
 const Statistics = ({ good, neutral, bad }) => {
     const all = good + neutral + bad;
@@ -9,9 +10,9 @@ const Statistics = ({ good, neutral, bad }) => {
             <Feedback text="good" count={good} />
             <Feedback text="neutral" count={neutral} />
             <Feedback text="bad" count={bad} />
-            <p>all {all}</p>
-            <p>average {average}</p>
-            <p>positive {positive}</p>
+            <StatisticLine text="all" value={all} />
+            <StatisticLine text="average" value={average} />
+            <StatisticLine text="positive" value={positive} />
         </>
     )
 }

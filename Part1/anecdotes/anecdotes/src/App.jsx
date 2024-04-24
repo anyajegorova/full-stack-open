@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import Header from './Header';
+import Button from './Button';
 
 const App = () => {
   const anecdotes = [
@@ -12,16 +14,28 @@ const App = () => {
     'The only way to go fast, is to go well.'
   ]
 
+  const votesArray = new Array(anecdotes.length).fill(0);
+
   const [selected, setSelected] = useState(0);
+  const [votes, setVotes] = useState(votesArray);
 
   const getRandomAnecdote = () => {
     setSelected(Math.floor(Math.random() * anecdotes.length));
   }
-
+  const handleVote = () => {
+    const newVotes = [...votes];
+    newVotes[selected] += 1;
+    setVotes(newVotes);
+  }
   return (
     <>
+      <Header text="Anecdote of the day" />
       <p>{anecdotes[selected]}</p>
-      <button onClick={getRandomAnecdote}>next anecdote</button>
+      <p>has {votes[selected]} votes</p>
+      <Button handleClick={handleVote} text="vote" />
+      <Button handleClick={getRandomAnecdote} text="next anecdote" />
+      <Header text="Anecdote of the day" />
+      <p>{anecdotes[votes.indexOf(Math.max(...votes))]}</p>
     </>
   )
 }
